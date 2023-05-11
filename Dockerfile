@@ -15,6 +15,8 @@ COPY requirements.txt .
 RUN pip install -U pip \
     && pip install git+https://github.com/IINemo/isanlp.git \
     && pip install -r requirements.txt
+RUN pip install urllib3==1.26.6 
+RUN pip install torch
 
 COPY processor_hf_translator.py .
 COPY pipeline_object.py .

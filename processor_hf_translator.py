@@ -35,6 +35,7 @@ class ProcessorHFTranslator:
 
         inputs = self.tokenizer.batch_encode_plus(sentences_text, padding=True, return_tensors="pt")
         result = self.model.generate(**inputs,
-                                     forced_bos_token_id=self.tokenizer.lang_code_to_id[lang_params])
+                                     forced_bos_token_id=self.tokenizer.lang_code_to_id[lang_params],
+                                     num_beams=4)
 
         return {'text_translated': self.tokenizer.batch_decode(result, skip_special_tokens=True)}
